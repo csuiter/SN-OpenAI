@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<unload unload_date="2024-01-01 00:00:00">
+    <sys_remote_update_set action="INSERT_OR_UPDATE">
+        <application display_value="Global">global</application>
+        <application_name>Global</application_name>
+        <application_scope>global</application_scope>
+        <application_version/>
+        <collisions/>
+        <commit_date/>
+        <deleted/>
+        <description>ServiceNow-OpenAI Integration Application&#13;
+&#13;
+This update set contains all components for the ServiceNow-OpenAI integration including:&#13;
+- Custom table for OpenAI interactions&#13;
+- Script Include for OpenAI API integration&#13;
+- Business rules for automated analysis&#13;
+- Client scripts for user interface&#13;
+- UI actions for manual triggers&#13;
+- Workflow activities for process automation&#13;
+- Scheduled jobs for batch processing&#13;
+&#13;
+Version: 1.0.0&#13;
+Release Date: 2024-01-01&#13;
+&#13;
+INSTALLATION REQUIREMENTS:&#13;
+1. ServiceNow Paris release or later&#13;
+2. OpenAI API key configured in system properties&#13;
+3. Network access to api.openai.com&#13;
+4. Appropriate user roles and permissions&#13;
+&#13;
+POST-INSTALLATION STEPS:&#13;
+1. Set system property 'openai.api_key' with your OpenAI API key&#13;
+2. Configure optional properties for auto-analysis and retention&#13;
+3. Assign 'openai_user' role to appropriate users&#13;
+4. Test the integration with a sample incident&#13;
+&#13;
+For detailed setup instructions, refer to the SETUP_GUIDE.md documentation.</description>
+        <inserted/>
+        <name>ServiceNow-OpenAI Integration v1.0.0</name>
+        <origin_sys_id/>
+        <parent display_value="">NULL</parent>
+        <release_date/>
+        <remote_base_update_set display_value="">NULL</remote_base_update_set>
+        <remote_parent_id/>
+        <remote_sys_id>openai_integration_update_set</remote_sys_id>
+        <state>loaded</state>
+        <summary>Complete ServiceNow-OpenAI integration with automated incident analysis, knowledge generation, and workflow integration capabilities.</summary>
+        <sys_class_name>sys_remote_update_set</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-01 00:00:00</sys_created_on>
+        <sys_id>openai_integration_update_set</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-01 00:00:00</sys_updated_on>
+        <update_guid>openai_integration_guid_001</update_guid>
+        <update_set display_value="">NULL</update_set>
+        <version/>
+    </sys_remote_update_set>
+    
+    <!-- Table Definition -->
+    <sys_db_object action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <actions_access>true</actions_access>
+        <alter_access>true</alter_access>
+        <caller_access/>
+        <client_scripts_access>true</client_scripts_access>
+        <configuration_access>false</configuration_access>
+        <create_access>true</create_access>
+        <create_access_controls>false</create_access_controls>
+        <delete_access>false</delete_access>
+        <extension_model/>
+        <is_extendable>false</is_extendable>
+        <label>OpenAI Interaction</label>
+        <live_feed_enabled>false</live_feed_enabled>
+        <name>x_openai_interaction</name>
+        <number_ref/>
+        <provider_class/>
+        <read_access>true</read_access>
+        <scriptable_table>false</scriptable_table>
+        <super_class/>
+        <sys_class_name>sys_db_object</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-01-01 00:00:00</sys_created_on>
+        <sys_id>openai_interaction_table</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>OpenAI Interaction</sys_name>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope>global</sys_scope>
+        <sys_update_name>sys_db_object_x_openai_interaction</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-01-01 00:00:00</sys_updated_on>
+        <update_access>true</update_access>
+        <user_role/>
+        <ws_access>true</ws_access>
+    </sys_db_object>
+    
+    <!-- Include references to all other components -->
+    <!-- Note: In a real update set, all individual component records would be included here -->
+    
+</unload>

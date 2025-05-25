@@ -1,0 +1,73 @@
+{
+  "name": "servicenow-openai-integration",
+  "version": "1.0.0",
+  "description": "A comprehensive ServiceNow application that integrates OpenAI's GPT models for intelligent automation and analysis",
+  "main": "src/snOpenAI.js",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint src/ tests/",
+    "lint:fix": "eslint src/ tests/ --fix",
+    "start": "node src/snOpenAI.js",
+    "dev": "nodemon src/snOpenAI.js"
+  },
+  "keywords": [
+    "servicenow",
+    "openai",
+    "gpt",
+    "artificial-intelligence",
+    "automation",
+    "incident-management",
+    "itsm",
+    "workflow"
+  ],
+  "author": "Your Organization",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.0",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "fluent-logger": "^3.4.1",
+    "openai": "^4.20.0"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.5",
+    "eslint": "^8.50.0",
+    "eslint-config-standard": "^17.1.0",
+    "jest": "^29.7.0",
+    "nodemon": "^3.0.1",
+    "supertest": "^6.3.3"
+  },
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/SN-OpenAI.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-org/SN-OpenAI/issues"
+  },
+  "homepage": "https://github.com/your-org/SN-OpenAI#readme",
+  "jest": {
+    "testEnvironment": "node",
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/**/*.test.js"
+    ],
+    "coverageReporters": [
+      "text",
+      "lcov",
+      "html"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "standard",
+    "env": {
+      "node": true,
+      "jest": true
+    }
+  }
+}
