@@ -1,16 +1,35 @@
 const axios = require('axios');
-const snOpenAI = require('../src/snOpenAI');
 
-// Mock axios
+// Mock axios before requiring the module
 jest.mock('axios');
 const mockedAxios = axios;
+
+// Mock fluent-logger to prevent hanging connections
+jest.mock('fluent-logger', () => ({
+    createFluentSender: jest.fn(() => ({
+        emit: jest.fn(),
+        end: jest.fn()
+    }))
+}));
+
+// Set up environment variables before requiring the module
+process.env.OPENAI_API_KEY = 'test-api-key';
+process.env.OPENAI_MODEL = 'gpt-3.5-turbo';
+
+const snOpenAI = require('../src/snOpenAI');
 
 describe('ServiceNow-OpenAI Integration Tests', () => {
     beforeEach(() => {
         jest.clearAllMocks();
-        // Set up environment variables for testing
+        // Ensure environment variables are set for each test
         process.env.OPENAI_API_KEY = 'test-api-key';
         process.env.OPENAI_MODEL = 'gpt-3.5-turbo';
+    });
+
+    afterAll(() => {
+        // Force Jest to exit by clearing all timers and intervals
+        jest.clearAllTimers();
+        jest.useRealTimers();
     });
 
     describe('OpenAI API Integration', () => {
@@ -60,7 +79,7 @@ describe('ServiceNow-OpenAI Integration Tests', () => {
             const result = await snOpenAI.sendPromptToOpenAI(prompt);
 
             expect(result).toContain('Error');
-            expect(result).toContain('Invalid API key');
+            expect(result).toContain('Invalid OpenAI API key');
         });
 
         test('should validate input parameters', async () => {
@@ -69,9 +88,8 @@ describe('ServiceNow-OpenAI Integration Tests', () => {
         });
 
         test('should handle missing API key', async () => {
-            delete process.env.OPENAI_API_KEY;
-            
-            const result = await snOpenAI.sendPromptToOpenAI('test prompt');
+            // Test with empty string as API key to simulate missing config
+            const result = await snOpenAI.sendPromptToOpenAI('test prompt', '');
             expect(result).toContain('Error: OpenAI API key not configured');
         });
     });

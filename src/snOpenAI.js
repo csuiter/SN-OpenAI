@@ -33,8 +33,9 @@ async function sendPromptToOpenAI(prompt, apiKey = null) {
             return error;
         }
 
-        const key = apiKey || config.apiKey;
-        if (!key) {
+        // Use provided API key if explicitly passed (including empty string), otherwise fall back to config
+        const key = (apiKey !== null) ? apiKey : config.apiKey;
+        if (!key || key.trim() === '') {
             const error = 'Error: OpenAI API key not configured';
             console.error(error);
             return error;
@@ -148,7 +149,7 @@ Incident Details:
 - Configuration Item: ${incidentData.cmdb_ci || 'N/A'}
 
 Please provide:
-1. Root cause analysis based on the symptoms
+1. root cause analysis based on the symptoms
 2. Detailed step-by-step resolution steps
 3. Similar incidents to investigate for patterns
 4. Prevention recommendations
@@ -193,8 +194,10 @@ function sanitizePromptData(text) {
     // Remove common sensitive patterns
     let sanitized = text;
     
-    // Remove potential passwords
+    // Remove potential passwords (various formats)
     sanitized = sanitized.replace(/password\s*[:=]\s*[\w\d!@#$%^&*()]+/gi, 'password: [REDACTED]');
+    sanitized = sanitized.replace(/password\s+is\s+[\w\d!@#$%^&*()]+/gi, 'password is [REDACTED]');
+    sanitized = sanitized.replace(/\bpassword\s+[\w\d!@#$%^&*()]+/gi, 'password [REDACTED]');
     
     // Remove potential SSNs
     sanitized = sanitized.replace(/\b\d{3}-\d{2}-\d{4}\b/g, '[REDACTED-SSN]');

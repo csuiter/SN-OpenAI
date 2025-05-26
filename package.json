@@ -4,9 +4,9 @@
   "description": "A comprehensive ServiceNow application that integrates OpenAI's GPT models for intelligent automation and analysis",
   "main": "src/snOpenAI.js",
   "scripts": {
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage",
+    "test": "jest --forceExit",
+    "test:watch": "jest --watch --forceExit",
+    "test:coverage": "jest --coverage --forceExit",
     "lint": "eslint src/ tests/",
     "lint:fix": "eslint src/ tests/ --fix",
     "start": "node src/snOpenAI.js",
@@ -53,6 +53,9 @@
   "homepage": "https://github.com/your-org/SN-OpenAI#readme",
   "jest": {
     "testEnvironment": "node",
+    "detectOpenHandles": true,
+    "forceExit": true,
+    "testTimeout": 10000,
     "collectCoverageFrom": [
       "src/**/*.js",
       "!src/**/*.test.js"
@@ -61,7 +64,8 @@
       "text",
       "lcov",
       "html"
-    ]
+    ],
+    "setupFilesAfterEnv": ["<rootDir>/tests/setup.js"]
   },
   "eslintConfig": {
     "extends": "standard",
