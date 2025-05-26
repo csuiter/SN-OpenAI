@@ -14,6 +14,8 @@
     "deploy": "node deployment/deploy.js",
     "deploy:quick": "node deployment/quick-deploy.js",
     "deploy:config": "node deployment/config-generator.js",
+    "deploy:install": "node deployment/update-set-installer.js",
+    "deploy:validate": "node deployment/validation/comprehensive-validator.js",
     "deploy:help": "node deployment/quick-deploy.js --help"
   },
   "keywords": [

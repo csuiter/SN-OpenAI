@@ -1,0 +1,899 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<unload unload_date="2024-12-19 12:00:00">
+    <!-- Update Set Header -->
+    <sys_remote_update_set action="INSERT_OR_UPDATE">
+        <application display_value="Global">global</application>
+        <application_name>Global</application_name>
+        <application_scope>global</application_scope>
+        <application_version/>
+        <collisions/>
+        <commit_date/>
+        <deleted/>
+        <description>ServiceNow-OpenAI Integration Complete Application
+
+This update set contains all components for the ServiceNow-OpenAI integration:
+- OpenAI Interaction custom table with all fields
+- Script Include for OpenAI API integration
+- Business Rule for automated high-priority incident analysis
+- Client Script for form enhancements
+- UI Action for manual AI analysis
+- Workflow Activity for process automation
+- Batch Processor for scheduled jobs
+- System Properties for configuration
+
+INSTALLATION REQUIREMENTS:
+1. ServiceNow Paris release or later
+2. OpenAI API key
+3. Network access to api.openai.com
+4. Admin privileges for installation
+
+POST-INSTALLATION STEPS:
+1. Navigate to System Properties > System
+2. Create property 'openai.api_key' with your OpenAI API key
+3. Set 'openai.auto_analysis.enabled' to 'true' for auto-analysis
+4. Assign users to 'openai_user' role
+5. Test with a sample incident
+
+Version: 1.0.0
+Release Date: 2024-12-19</description>
+        <inserted/>
+        <name>ServiceNow-OpenAI Integration v1.0.0 - Complete</name>
+        <origin_sys_id/>
+        <parent display_value="">NULL</parent>
+        <release_date/>
+        <remote_base_update_set display_value="">NULL</remote_base_update_set>
+        <remote_parent_id/>
+        <remote_sys_id>sn_openai_complete_update_set</remote_sys_id>
+        <state>loaded</state>
+        <summary>Complete ServiceNow-OpenAI integration with automated incident analysis, knowledge generation, and workflow capabilities.</summary>
+        <sys_class_name>sys_remote_update_set</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-12-19 12:00:00</sys_created_on>
+        <sys_id>sn_openai_complete_update_set</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-12-19 12:00:00</sys_updated_on>
+        <update_guid>sn_openai_guid_001</update_guid>
+        <update_set display_value="">NULL</update_set>
+        <version/>
+    </sys_remote_update_set>
+
+    <!-- OpenAI Interaction Table Definition -->
+    <sys_db_object action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <actions_access>true</actions_access>
+        <alter_access>true</alter_access>
+        <caller_access/>
+        <client_scripts_access>true</client_scripts_access>
+        <configuration_access>false</configuration_access>
+        <create_access>true</create_access>
+        <create_access_controls>false</create_access_controls>
+        <delete_access>false</delete_access>
+        <extension_model/>
+        <is_extendable>false</is_extendable>
+        <label>OpenAI Interaction</label>
+        <live_feed_enabled>false</live_feed_enabled>
+        <name>x_openai_interaction</name>
+        <number_ref/>
+        <provider_class/>
+        <read_access>true</read_access>
+        <scriptable_table>false</scriptable_table>
+        <super_class/>
+        <sys_class_name>sys_db_object</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-12-19 12:00:00</sys_created_on>
+        <sys_id>openai_interaction_table</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>OpenAI Interaction</sys_name>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope>global</sys_scope>
+        <sys_update_name>sys_db_object_x_openai_interaction</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-12-19 12:00:00</sys_updated_on>
+        <update_access>true</update_access>
+        <user_role/>
+        <ws_access>true</ws_access>
+    </sys_db_object>
+
+    <!-- Table Fields -->
+    <!-- Prompt Field -->
+    <sys_dictionary action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <audit>false</audit>
+        <calculation/>
+        <choice>0</choice>
+        <choice_field/>
+        <choice_table/>
+        <column_label>Prompt</column_label>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>prompt</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <internal_type display_value="String">string</internal_type>
+        <max_length>4000</max_length>
+        <name>x_openai_interaction</name>
+        <next_element/>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_dictionary</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-12-19 12:00:00</sys_created_on>
+        <sys_id>openai_prompt_field</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Prompt</sys_name>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope>global</sys_scope>
+        <sys_update_name>sys_dictionary_x_openai_interaction_prompt</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-12-19 12:00:00</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_dictionary>
+
+    <!-- Response Field -->
+    <sys_dictionary action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <audit>false</audit>
+        <calculation/>
+        <choice>0</choice>
+        <choice_field/>
+        <choice_table/>
+        <column_label>Response</column_label>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>response</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <internal_type display_value="String">string</internal_type>
+        <max_length>8000</max_length>
+        <name>x_openai_interaction</name>
+        <next_element/>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_dictionary</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-12-19 12:00:00</sys_created_on>
+        <sys_id>openai_response_field</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Response</sys_name>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope>global</sys_scope>
+        <sys_update_name>sys_dictionary_x_openai_interaction_response</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-12-19 12:00:00</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_dictionary>
+
+    <!-- Related Record Field -->
+    <sys_dictionary action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <audit>false</audit>
+        <calculation/>
+        <choice>0</choice>
+        <choice_field/>
+        <choice_table/>
+        <column_label>Related Record</column_label>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>related_record</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <internal_type display_value="String">string</internal_type>
+        <max_length>32</max_length>
+        <name>x_openai_interaction</name>
+        <next_element/>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_dictionary</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-12-19 12:00:00</sys_created_on>
+        <sys_id>openai_related_record_field</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Related Record</sys_name>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope>global</sys_scope>
+        <sys_update_name>sys_dictionary_x_openai_interaction_related_record</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-12-19 12:00:00</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_dictionary>
+
+    <!-- Status Field -->
+    <sys_dictionary action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <array>false</array>
+        <audit>false</audit>
+        <calculation/>
+        <choice>1</choice>
+        <choice_field/>
+        <choice_table/>
+        <column_label>Status</column_label>
+        <comments/>
+        <create_roles/>
+        <default_value>pending</default_value>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>status</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <internal_type display_value="String">string</internal_type>
+        <max_length>20</max_length>
+        <name>x_openai_interaction</name>
+        <next_element/>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <sizeclass/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_dictionary</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-12-19 12:00:00</sys_created_on>
+        <sys_id>openai_status_field</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Status</sys_name>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope>global</sys_scope>
+        <sys_update_name>sys_dictionary_x_openai_interaction_status</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-12-19 12:00:00</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_dictionary>
+
+    <!-- Status Choice Values -->
+    <sys_choice action="INSERT_OR_UPDATE">
+        <choice_table>x_openai_interaction</choice_table>
+        <choice_field>status</choice_field>
+        <choice_value>pending</choice_value>
+        <choice_label>Pending</choice_label>
+        <choice_order>100</choice_order>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-12-19 12:00:00</sys_created_on>
+        <sys_id>openai_choice_pending</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-12-19 12:00:00</sys_updated_on>
+    </sys_choice>
+
+    <sys_choice action="INSERT_OR_UPDATE">
+        <choice_table>x_openai_interaction</choice_table>
+        <choice_field>status</choice_field>
+        <choice_value>completed</choice_value>
+        <choice_label>Completed</choice_label>
+        <choice_order>200</choice_order>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-12-19 12:00:00</sys_created_on>
+        <sys_id>openai_choice_completed</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-12-19 12:00:00</sys_updated_on>
+    </sys_choice>
+
+    <sys_choice action="INSERT_OR_UPDATE">
+        <choice_table>x_openai_interaction</choice_table>
+        <choice_field>status</choice_field>
+        <choice_value>error</choice_value>
+        <choice_label>Error</choice_label>
+        <choice_order>300</choice_order>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-12-19 12:00:00</sys_created_on>
+        <sys_id>openai_choice_error</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-12-19 12:00:00</sys_updated_on>
+    </sys_choice>
+
+    <!-- Script Include: OpenAI Integration -->
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>OpenAIIntegration</api_name>
+        <caller_access/>
+        <client_callable>true</client_callable>
+        <description>Main Script Include for OpenAI API integration with ServiceNow</description>
+        <name>OpenAIIntegration</name>
+        <script><![CDATA[var OpenAIIntegration = Class.create();
+OpenAIIntegration.prototype = Object.extendsObject(global.AbstractAjaxProcessor, {
+    /**
+     * Sends a prompt to OpenAI and returns the response.
+     * This function is intended to be called from a ServiceNow server-side script, like a workflow.
+     *
+     * @param {string} prompt - The prompt to send to OpenAI.
+     * @returns {string} - The response text from OpenAI, or an error message.
+     */
+    sendPromptToOpenAI: function(prompt) {
+        var apiKey = gs.getProperty('openai.api_key'); // Store your API key as a system property
+        if (!apiKey) {
+            gs.error('OpenAI API key not found. Please set the system property "openai.api_key".');
+            return 'Error: OpenAI API key not configured in ServiceNow.';
+        }
+
+        if (!prompt) {
+            gs.warn('OpenAIIntegration: No prompt provided.');
+            return 'Error: No prompt provided.';
+        }
+
+        try {
+            var request = new sn_ws.RESTMessageV2();
+            request.setEndpoint('https://api.openai.com/v1/chat/completions');
+            request.setHttpMethod('POST');
+            request.setRequestHeader('Authorization', 'Bearer ' + apiKey);
+            request.setRequestHeader('Content-Type', 'application/json');
+
+            var requestBody = {
+                model: 'gpt-3.5-turbo', // Or your preferred model
+                messages: [{ role: 'user', content: prompt }]
+            };
+            request.setRequestBody(JSON.stringify(requestBody));
+
+            var response = request.execute();
+            var httpResponseStatus = response.getStatusCode();
+            var responseBody = response.getBody();
+
+            if (httpResponseStatus === 200) {
+                var parsedResponseBody = JSON.parse(responseBody);
+                if (parsedResponseBody.choices && parsedResponseBody.choices.length > 0 && parsedResponseBody.choices[0].message) {
+                    return parsedResponseBody.choices[0].message.content;
+                } else {
+                    gs.error('OpenAIIntegration: Unexpected response structure: ' + responseBody);
+                    return 'Error: Could not parse OpenAI response.';
+                }
+            } else {
+                gs.error('OpenAIIntegration: OpenAI API request failed with status ' + httpResponseStatus + ': ' + responseBody);
+                return 'Error: OpenAI API request failed. Status: ' + httpResponseStatus;
+            }
+        } catch (ex) {
+            gs.error('OpenAIIntegration: Exception during OpenAI API call: ' + ex.getMessage());
+            return 'Error: Exception occurred while contacting OpenAI - ' + ex.getMessage();
+        }
+    },
+
+    /**
+     * AJAX function to analyze an incident
+     * Called from client-side scripts
+     */
+    analyzeIncident: function() {
+        var incidentSysId = this.getParameter('sysparm_incident_sys_id');
+        var incidentData = this.getParameter('sysparm_incident_data');
+        
+        if (!incidentSysId) {
+            return 'Error: No incident specified';
+        }
+        
+        try {
+            var incident = new GlideRecord('incident');
+            if (!incident.get(incidentSysId)) {
+                return 'Error: Incident not found';
+            }
+            
+            // Create analysis prompt
+            var prompt = 'Analyze this ServiceNow incident and provide detailed guidance:\n\n' +
+                'Incident: ' + incident.number + '\n' +
+                'Priority: ' + incident.priority.getDisplayValue() + '\n' +
+                'State: ' + incident.state.getDisplayValue() + '\n' +
+                'Short Description: ' + incident.short_description + '\n' +
+                'Description: ' + incident.description + '\n' +
+                'Category: ' + incident.category.getDisplayValue() + '\n' +
+                'Assignment Group: ' + incident.assignment_group.getDisplayValue() + '\n\n' +
+                'Please provide:\n' +
+                '1. Root cause analysis\n' +
+                '2. Detailed resolution steps\n' +
+                '3. Similar incidents to check\n' +
+                '4. Prevention recommendations\n\n' +
+                'Format for ServiceNow work notes.';
+            
+            var response = this.sendPromptToOpenAI(prompt);
+            
+            // Log the interaction
+            var interactionGR = new GlideRecord('x_openai_interaction');
+            interactionGR.initialize();
+            interactionGR.prompt = prompt;
+            interactionGR.response = response;
+            interactionGR.related_record = incidentSysId;
+            interactionGR.status = response.startsWith('Error:') ? 'error' : 'completed';
+            interactionGR.insert();
+            
+            return response;
+            
+        } catch (ex) {
+            gs.error('OpenAI analyzeIncident error: ' + ex.getMessage());
+            return 'Error: ' + ex.getMessage();
+        }
+    },
+
+    /**
+     * AJAX function to generate knowledge article content
+     */
+    generateKnowledge: function() {
+        var incidentSysId = this.getParameter('sysparm_incident_sys_id');
+        
+        if (!incidentSysId) {
+            return 'Error: No incident specified';
+        }
+        
+        try {
+            var incident = new GlideRecord('incident');
+            if (!incident.get(incidentSysId)) {
+                return 'Error: Incident not found';
+            }
+            
+            // Create knowledge generation prompt
+            var prompt = 'Create a comprehensive ServiceNow knowledge article based on this resolved incident:\n\n' +
+                'Incident: ' + incident.number + '\n' +
+                'Title: ' + incident.short_description + '\n' +
+                'Problem Description: ' + incident.description + '\n' +
+                'Resolution: ' + incident.close_notes + '\n' +
+                'Category: ' + incident.category.getDisplayValue() + '\n\n' +
+                'Generate a knowledge article with:\n' +
+                '1. Clear problem statement\n' +
+                '2. Symptoms and indicators\n' +
+                '3. Step-by-step solution\n' +
+                '4. Root cause explanation\n' +
+                '5. Prevention measures\n' +
+                '6. Related information and links\n\n' +
+                'Use clear headings and professional formatting suitable for end users.';
+            
+            var response = this.sendPromptToOpenAI(prompt);
+            
+            // Log the interaction
+            var interactionGR = new GlideRecord('x_openai_interaction');
+            interactionGR.initialize();
+            interactionGR.prompt = prompt;
+            interactionGR.response = response;
+            interactionGR.related_record = incidentSysId;
+            interactionGR.status = response.startsWith('Error:') ? 'error' : 'completed';
+            interactionGR.insert();
+            
+            return response;
+            
+        } catch (ex) {
+            gs.error('OpenAI generateKnowledge error: ' + ex.getMessage());
+            return 'Error: ' + ex.getMessage();
+        }
+    },
+
+    /**
+     * Generic OpenAI prompt execution for workflows
+     * @param {string} prompt - The prompt to send
+     * @param {string} relatedRecord - SysId of related record
+     * @returns {string} - OpenAI response
+     */
+    executeWorkflowPrompt: function(prompt, relatedRecord) {
+        try {
+            var response = this.sendPromptToOpenAI(prompt);
+            
+            // Log the interaction
+            var interactionGR = new GlideRecord('x_openai_interaction');
+            interactionGR.initialize();
+            interactionGR.prompt = prompt;
+            interactionGR.response = response;
+            interactionGR.related_record = relatedRecord || '';
+            interactionGR.status = response.startsWith('Error:') ? 'error' : 'completed';
+            interactionGR.insert();
+            
+            return response;
+            
+        } catch (ex) {
+            gs.error('OpenAI executeWorkflowPrompt error: ' + ex.getMessage());
+            return 'Error: ' + ex.getMessage();
+        }
+    },
+
+    type: 'OpenAIIntegration'
+});]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-12-19 12:00:00</sys_created_on>
+        <sys_id>openai_script_include</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>OpenAIIntegration</sys_name>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope>global</sys_scope>
+        <sys_update_name>sys_script_include_OpenAIIntegration</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-12-19 12:00:00</sys_updated_on>
+    </sys_script_include>
+
+    <!-- Business Rule: Auto-analyze High Priority Incidents -->
+    <sys_script action="INSERT_OR_UPDATE">
+        <abort_action>false</abort_action>
+        <access>package_private</access>
+        <action_delete>false</action_delete>
+        <action_insert>true</action_insert>
+        <action_query>false</action_query>
+        <action_update>true</action_update>
+        <active>true</active>
+        <add_message>false</add_message>
+        <advanced>true</advanced>
+        <change_fields>false</change_fields>
+        <client_callable>false</client_callable>
+        <collection>incident</collection>
+        <condition>priority=1^ORpriority=2</condition>
+        <description>Auto-analyze High Priority Incidents with OpenAI</description>
+        <execute_function>false</execute_function>
+        <filter_condition/>
+        <is_rest>false</is_rest>
+        <message/>
+        <name>OpenAI Auto Analysis</name>
+        <order>100</order>
+        <priority>100</priority>
+        <rest_method/>
+        <rest_method_text/>
+        <rest_service/>
+        <rest_service_text/>
+        <rest_variables/>
+        <role_conditions/>
+        <script><![CDATA[(function executeRule(current, previous) {
+    
+    // Only process if priority is Critical (1) or High (2)
+    if (current.priority != '1' && current.priority != '2') {
+        return;
+    }
+    
+    // Only process if this is a new incident or priority just changed to high/critical
+    if (previous && previous.priority == current.priority) {
+        return;
+    }
+    
+    // Check if OpenAI analysis is enabled via system property
+    var enableAutoAnalysis = gs.getProperty('openai.auto_analysis.enabled', 'false');
+    if (enableAutoAnalysis !== 'true') {
+        return;
+    }
+    
+    try {
+        // Create OpenAI integration instance
+        var openai = new OpenAIIntegration();
+        
+        // Generate analysis prompt
+        var prompt = 'URGENT: Analyze this high-priority ServiceNow incident and provide immediate guidance:\n\n' +
+            'Incident Number: ' + current.number + '\n' +
+            'Priority: ' + current.priority.getDisplayValue() + '\n' +
+            'Short Description: ' + current.short_description + '\n' +
+            'Description: ' + current.description + '\n' +
+            'Category: ' + current.category.getDisplayValue() + '\n' +
+            'Subcategory: ' + current.subcategory.getDisplayValue() + '\n' +
+            'Configuration Item: ' + current.cmdb_ci.getDisplayValue() + '\n\n' +
+            'Please provide:\n' +
+            '1. Immediate troubleshooting steps\n' +
+            '2. Potential root causes\n' +
+            '3. Escalation recommendations\n' +
+            '4. Similar incident patterns to investigate\n\n' +
+            'Format response for ServiceNow work notes.';
+        
+        // Execute OpenAI analysis
+        var response = openai.sendPromptToOpenAI(prompt);
+        
+        // Add analysis to work notes if successful
+        if (response && !response.startsWith('Error:')) {
+            var timestamp = new Date().toLocaleString();
+            var workNotes = current.work_notes || '';
+            current.work_notes = workNotes + '\n\n[' + timestamp + '] AI Analysis:\n' + response + '\n';
+            current.update();
+        }
+        
+        // Log the interaction
+        var interactionGR = new GlideRecord('x_openai_interaction');
+        interactionGR.initialize();
+        interactionGR.prompt = prompt;
+        interactionGR.response = response;
+        interactionGR.related_record = current.sys_id;
+        interactionGR.status = response.startsWith('Error:') ? 'error' : 'completed';
+        interactionGR.insert();
+        
+        gs.info('OpenAI analysis completed for high-priority incident: ' + current.number);
+        
+    } catch (ex) {
+        gs.error('OpenAI Business Rule Error for incident ' + current.number + ': ' + ex.getMessage());
+    }
+    
+})(current, previous);]]></script>
+        <sys_class_name>sys_script</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-12-19 12:00:00</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>openai_business_rule</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>OpenAI Auto Analysis</sys_name>
+        <sys_overrides/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope>global</sys_scope>
+        <sys_update_name>sys_script_openai_auto_analysis</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-12-19 12:00:00</sys_updated_on>
+        <template/>
+        <when>after</when>
+    </sys_script>
+
+    <!-- UI Action: Analyze with OpenAI -->
+    <sys_ui_action action="INSERT_OR_UPDATE">
+        <action_name>openai_analyze</action_name>
+        <active>true</active>
+        <caption>Analyze with AI</caption>
+        <client>true</client>
+        <comments>Analyze incident using OpenAI</comments>
+        <condition/>
+        <form_action>true</form_action>
+        <form_button>true</form_button>
+        <form_button_v2>false</form_button_v2>
+        <form_context_menu>false</form_context_menu>
+        <form_menu_button>false</form_menu_button>
+        <form_style/>
+        <hint/>
+        <icon/>
+        <list_action>false</list_action>
+        <list_banner_button>false</list_banner_button>
+        <list_button>false</list_button>
+        <list_choice>false</list_choice>
+        <list_context_menu>false</list_context_menu>
+        <list_save_with_form_button>false</list_save_with_form_button>
+        <list_style/>
+        <name>openai_analyze</name>
+        <onclick>openaiAnalyze();</onclick>
+        <order>100</order>
+        <script><![CDATA[function openaiAnalyze() {
+    if (!g_form.getValue('short_description')) {
+        alert('Please provide a short description before analyzing with AI.');
+        return false;
+    }
+    
+    // Show loading message
+    var loadingMsg = 'Analyzing incident with OpenAI...';
+    g_form.addInfoMessage(loadingMsg);
+    
+    // Call server-side action
+    var processor = new GlideAjax('OpenAIIntegration');
+    processor.addParam('sysparm_name', 'analyzeIncident');
+    processor.addParam('sysparm_incident_sys_id', g_form.getUniqueValue());
+    
+    processor.getXML(function(response) {
+        var answer = response.responseXML.documentElement.getAttribute('answer');
+        
+        if (answer && !answer.startsWith('Error:')) {
+            // Add to work notes
+            var currentNotes = g_form.getValue('work_notes') || '';
+            var timestamp = new Date().toLocaleString();
+            var newNotes = currentNotes + 
+                '\n\n[' + timestamp + '] AI Analysis:\n' + 
+                answer + '\n';
+            
+            g_form.setValue('work_notes', newNotes);
+            g_form.clearMessages();
+            g_form.addInfoMessage('AI analysis completed and added to work notes.');
+        } else {
+            g_form.clearMessages();
+            g_form.addErrorMessage('AI analysis failed: ' + (answer || 'Unknown error'));
+        }
+    });
+    
+    return false; // Prevent form submission
+}]]></script>
+        <show_insert>false</show_insert>
+        <show_multiple_update>false</show_multiple_update>
+        <show_query>false</show_query>
+        <show_update>true</show_update>
+        <sys_class_name>sys_ui_action</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-12-19 12:00:00</sys_created_on>
+        <sys_domain>global</sys_domain>
+        <sys_domain_path>/</sys_domain_path>
+        <sys_id>openai_ui_action</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>Analyze with AI</sys_name>
+        <sys_overrides/>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope>global</sys_scope>
+        <sys_update_name>sys_ui_action_openai_analyze</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-12-19 12:00:00</sys_updated_on>
+        <table>incident</table>
+        <ui_type>0</ui_type>
+    </sys_ui_action>
+
+    <!-- System Properties -->
+    <sys_properties action="INSERT_OR_UPDATE">
+        <category>OpenAI Integration</category>
+        <description>OpenAI API key for integration</description>
+        <name>openai.api_key</name>
+        <read_roles/>
+        <suffix/>
+        <sys_class_name>sys_properties</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-12-19 12:00:00</sys_created_on>
+        <sys_id>openai_api_key_property</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>openai.api_key</sys_name>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope>global</sys_scope>
+        <sys_update_name>sys_properties_openai_api_key</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-12-19 12:00:00</sys_updated_on>
+        <type>string</type>
+        <value/>
+        <write_roles>admin</write_roles>
+    </sys_properties>
+
+    <sys_properties action="INSERT_OR_UPDATE">
+        <category>OpenAI Integration</category>
+        <description>Enable automatic OpenAI analysis for high priority incidents</description>
+        <name>openai.auto_analysis.enabled</name>
+        <read_roles/>
+        <suffix/>
+        <sys_class_name>sys_properties</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-12-19 12:00:00</sys_created_on>
+        <sys_id>openai_auto_analysis_property</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>openai.auto_analysis.enabled</sys_name>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope>global</sys_scope>
+        <sys_update_name>sys_properties_openai_auto_analysis</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-12-19 12:00:00</sys_updated_on>
+        <type>true_false</type>
+        <value>false</value>
+        <write_roles>admin</write_roles>
+    </sys_properties>
+
+    <!-- User Role -->
+    <sys_user_role action="INSERT_OR_UPDATE">
+        <assignable_by/>
+        <can_delegate>true</can_delegate>
+        <description>Role for users who can access OpenAI integration features</description>
+        <elevated_privilege>false</elevated_privilege>
+        <grantable>true</grantable>
+        <includes_roles/>
+        <name>openai_user</name>
+        <requires_subscription/>
+        <scoped_admin>false</scoped_admin>
+        <suffix/>
+        <sys_class_name>sys_user_role</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2024-12-19 12:00:00</sys_created_on>
+        <sys_id>openai_user_role</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>openai_user</sys_name>
+        <sys_package/>
+        <sys_policy/>
+        <sys_scope>global</sys_scope>
+        <sys_update_name>sys_user_role_openai_user</sys_update_name>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2024-12-19 12:00:00</sys_updated_on>
+    </sys_user_role>
+
+</unload>

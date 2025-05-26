@@ -49,20 +49,32 @@ docs/
 
 ### 🚀 Easy Deployment (Recommended)
 
-**Option 1: Interactive Deployment**
+**Option 1: Complete XML Update Set** (Recommended)
 ```bash
 git clone https://github.com/your-org/SN-OpenAI.git
 cd SN-OpenAI
 npm install
-npm run deploy
+npm run deploy:install  # Direct installation via REST API
+```
+Or manually import: `deployment/ServiceNow-OpenAI-Complete-UpdateSet.xml`
+
+**Option 2: Interactive Deployment Wizard**
+```bash
+npm run deploy  # Guided setup with validation
 ```
 
-**Option 2: Quick Deployment CLI**
+**Option 3: ServiceNow Studio/IDE Integration**
+```bash
+# Clone repo directly in ServiceNow Studio
+# Follow: deployment/ServiceNow-Studio-Installation-Guide.md
+```
+
+**Option 4: Quick Deployment CLI**
 ```bash
 npm run deploy:quick -- --instance=https://your-instance.service-now.com
 ```
 
-**Option 3: One-Line Shell Script**
+**Option 5: One-Line Shell Script**
 ```bash
 ./deployment/deploy.sh interactive
 # or
@@ -70,6 +82,7 @@ npm run deploy:quick -- --instance=https://your-instance.service-now.com
 ```
 
 The deployment tools will:
+- ✅ Install complete update set with all components
 - ✅ Validate your ServiceNow connection
 - ✅ Test your OpenAI API key
 - ✅ Generate customized deployment scripts
