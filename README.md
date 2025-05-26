@@ -47,28 +47,86 @@ docs/
 
 ## 🛠️ Installation
 
-### Quick Start
+### 🚀 Easy Deployment (Recommended)
+
+**Option 1: Interactive Deployment**
+```bash
+git clone https://github.com/your-org/SN-OpenAI.git
+cd SN-OpenAI
+npm install
+npm run deploy
+```
+
+**Option 2: Quick Deployment CLI**
+```bash
+npm run deploy:quick -- --instance=https://your-instance.service-now.com
+```
+
+**Option 3: One-Line Shell Script**
+```bash
+./deployment/deploy.sh interactive
+# or
+./deployment/deploy.sh quick https://your-instance.service-now.com
+```
+
+The deployment tools will:
+- ✅ Validate your ServiceNow connection
+- ✅ Test your OpenAI API key
+- ✅ Generate customized deployment scripts
+- ✅ Provide step-by-step instructions with direct links
+- ✅ Create validation scripts for post-deployment testing
+
+### 📋 Manual Installation
+
+If you prefer manual setup:
+
 1. **Clone the repository**
    ```bash
    git clone https://github.com/your-org/SN-OpenAI.git
    cd SN-OpenAI
    ```
 
-2. **Set up OpenAI API Key**
-   - Obtain API key from [OpenAI Platform](https://platform.openai.com/)
-   - In ServiceNow, create system property: `openai.api_key`
+2. **Import ServiceNow Update Set**
+   - Go to **System Update Sets > Retrieved Update Sets**
+   - Import: `src/servicenow/ServiceNowOpenAIUpdateSet.xml`
+   - Preview and commit the update set
 
-3. **Import ServiceNow Components**
-   - Import all files from `src/servicenow/` into your ServiceNow instance
-   - Follow detailed instructions in [SETUP_GUIDE.md](SETUP_GUIDE.md)
+3. **Configure API Key**
+   - In ServiceNow Scripts - Background, run:
+   ```javascript
+   var prop = new GlideRecord('sys_properties');
+   prop.addQuery('name', 'openai.api_key');
+   prop.query();
+   if (prop.next()) {
+       prop.setValue('value', 'YOUR_OPENAI_API_KEY');
+       prop.update();
+   } else {
+       prop.initialize();
+       prop.setValue('name', 'openai.api_key');
+       prop.setValue('value', 'YOUR_OPENAI_API_KEY');
+       prop.insert();
+   }
+   ```
+
+4. **Validate Deployment**
+   - Run the validation script: `deployment/validation/comprehensive-validator.js`
+
+For detailed manual setup instructions, see [SETUP_GUIDE.md](SETUP_GUIDE.md).
 
 ### Prerequisites
 - ServiceNow instance (Paris release or later)
 - OpenAI API account with valid API key
 - Admin access to ServiceNow instance
 - Network connectivity to `https://api.openai.com`
+- Node.js 14+ (for deployment tools)
 
 ## 🔧 Configuration
+
+### Automated Configuration
+Use the config generator for customized setup:
+```bash
+npm run deploy:config -- --apiKey=sk-your-key --usernames=admin,john.doe --autoAnalysis=true
+```
 
 ### System Properties
 ```javascript

@@ -10,7 +10,11 @@
     "lint": "eslint src/ tests/",
     "lint:fix": "eslint src/ tests/ --fix",
     "start": "node src/snOpenAI.js",
-    "dev": "nodemon src/snOpenAI.js"
+    "dev": "nodemon src/snOpenAI.js",
+    "deploy": "node deployment/deploy.js",
+    "deploy:quick": "node deployment/quick-deploy.js",
+    "deploy:config": "node deployment/config-generator.js",
+    "deploy:help": "node deployment/quick-deploy.js --help"
   },
   "keywords": [
     "servicenow",
